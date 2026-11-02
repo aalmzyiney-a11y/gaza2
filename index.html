@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بوابة وتجميع روابط المساعدات الإنسانية الرسمية</title>
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed top-5 left-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo & Title -->
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-200">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              بوابة روابط المساعدات الإنسانية
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                منصة رسمية معتمدة
+              </span>
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500">دليل موحد يضم الروابط المباشرة والمواقع الرسمية للهيئات الإغاثية</p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button id="openAddModalBtn" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-100 transition-all active:scale-95">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            <span class="hidden sm:inline">إضافة رابط جديد</span>
+            <span class="sm:hidden">إضافة</span>
+          </button>
+          
+          <button id="openExportModalBtn" class="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+            </svg>
+            <span class="hidden md:inline">تصدير / نسخ البيانات</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
+
+    <!-- Anti-Fraud & Safety Alert Banner -->
+    <div class="bg-amber-50 border-r-4 border-amber-500 rounded-2xl p-4 sm:p-5 shadow-sm">
+      <div class="flex items-start gap-4">
+        <div class="p-2 bg-amber-100 rounded-xl text-amber-700 flex-shrink-0 mt-0.5">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+          </svg>
+        </div>
+        <div class="space-y-1">
+          <h2 class="text-base font-bold text-amber-900">تنبيه هام وميثاق الأمان الإنساني</h2>
+          <p class="text-sm text-amber-800 leading-relaxed">
+            جميع المساعدات الإنسانية من الهيئات والمنظمات الرسمية <strong class="font-extrabold underline">مجانية 100%</strong>. تحتوي كل بطاقة على <strong>الرابط المباشر للخدمة أو التسجيل</strong> مع رابط <strong>الموقع الرسمي للمنظمة</strong> للتحقق. لا تقم أبداً بدفع أي رسوم لأي وسيط.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats & Overview Cards -->
+    <section class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+          </svg>
+        </div>
+        <div>
+          <span id="statTotalLinks" class="block text-xl font-black text-slate-900">8</span>
+          <span class="text-xs text-slate-500 font-semibold">إجمالي الروابط الرسمية</span>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="block text-xl font-black text-blue-600">100%</span>
+          <span class="text-xs text-slate-500 font-semibold">جهات معتمدة وموثقة</span>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+          </svg>
+        </div>
+        <div>
+          <span id="statCategories" class="block text-xl font-black text-slate-900">6</span>
+          <span class="text-xs text-slate-500 font-semibold">قطاعات ومجالات إغاثية</span>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          </svg>
+        </div>
+        <div>
+          <span id="statUserAdded" class="block text-xl font-black text-teal-600">0</span>
+          <span class="text-xs text-slate-500 font-semibold">روابط أضفتها أنت</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <section class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+      <!-- Search Input -->
+      <div class="relative">
+        <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-slate-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="ابحث باسم المنظمة، نوع المساعدة، أو الكلمات المفتاحية (مثل: طرود غذائية، أونروا، أطفال، مفقودين)..." 
+          class="w-full pr-12 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all text-sm"
+        >
+        <button id="clearSearchBtn" class="hidden absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 hover:text-slate-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 custom-scrollbar" id="categoryFilters">
+        <button data-cat="all" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-emerald-600 text-white shadow-xs transition-all">
+          الكل (<span id="catCountAll">8</span>)
+        </button>
+        <button data-cat="food" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all">
+          🌾 مساعدات غذائية وتموينية
+        </button>
+        <button data-cat="registration" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all">
+          📋 تسجيل اللاجئين وبطاقات الدعم
+        </button>
+        <button data-cat="health" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all">
+          🚑 إسعاف ورعاية صحية
+        </button>
+        <button data-cat="children" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all">
+          👶 حماية الأطفال والعائلات
+        </button>
+        <button data-cat="familylinks" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all">
+          🔍 البحث عن المفقودين والتواصل
+        </button>
+        <button data-cat="coordination" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all">
+          🌐 التنسيق الإنساني والتقارير
+        </button>
+      </div>
+    </section>
+
+    <!-- Links Grid Section -->
+    <section>
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+          <span>دليل الروابط المعتمدة</span>
+          <span id="resultsCount" class="text-xs bg-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded-full">8 نتائج</span>
+        </h2>
+        <div class="text-xs text-slate-500 font-medium">
+          تحتوي كل بطاقة على <span class="text-emerald-700 font-bold">الرابط المباشر للخدمة</span> بجانب <span class="text-slate-700 font-bold">الموقع الرسمي</span>
+        </div>
+      </div>
+
+      <!-- Links Container -->
+      <div id="linksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden py-16 text-center bg-white rounded-2xl border border-slate-200">
+        <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-base font-bold text-slate-800 mb-1">لم يتم العثور على أي رابط مطابق</h3>
+        <p class="text-sm text-slate-500 mb-4">جرب البحث بكلمات مختلفة أو اختر تصنيفاً آخر، أو أضف رابطاً جديداً بنفسك.</p>
+        <button id="resetFiltersBtn" class="px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-sm hover:bg-emerald-700">
+          إعادة ضبط الفلاتر والبحث
+        </button>
+      </div>
+    </section>
+
+    <!-- Project Instruction & Guide Section for User -->
+    <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-6 sm:p-8 shadow-lg">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          ميزة الزر المباشر والموقع الرسمي
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold">أزرار مزدوجة: وصول مباشر للخدمة + تحقق من الموقع الرسمي</h2>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          تم تحديث كل بطاقة لتشمل <span class="text-emerald-400 font-bold">زر الرابط المباشر للخدمة أو الاستعلام</span> لتوفير الوقت على المستفيد، بالإضافة إلى <span class="text-slate-300 font-bold">زر الموقع الرسمي</span> للتحقق والتأكد من موثوقية الجهة الإغاثية.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
+          <div class="bg-white/10 p-3 rounded-xl border border-white/10">
+            <span class="block text-emerald-400 font-bold mb-1">⚡ الرابط المباشر</span>
+            ينقلك فوراً لصفحة التسجيل، الاستعلام، أو الخدمة الطارئة دون الحاجة للتنقل داخل الموقع.
+          </div>
+          <div class="bg-white/10 p-3 rounded-xl border border-white/10">
+            <span class="block text-blue-300 font-bold mb-1">🌐 الموقع الرسمي</span>
+            ينقلك للصفحة الرئيسية للمنظمة لقراءة الإعلانات الرسمية والتأكد من التحديثات.
+          </div>
+          <div class="bg-white/10 p-3 rounded-xl border border-white/10">
+            <span class="block text-amber-300 font-bold mb-1">📋 نسخ الرابط</span>
+            نسخ الرابط المباشر للمشاركة في مجموعات الواتساب أو تيليجرام بنقرة واحدة.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div>
+        جميع الروابط المدرجة هي روابط للمواقع الرسمية للمنظمات الإنسانية والإغاثية المعتمدة دولياً.
+      </div>
+      <div class="flex items-center gap-4">
+        <span>بوابة المساعدات الرسمية</span>
+        <span>•</span>
+        <span>تحديث مستمر</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Add New Aid Link -->
+  <div id="addModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg border border-slate-200 overflow-hidden transform transition-all">
+      <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </span>
+          إضافة رابط مساعدة جديد
+        </h3>
+        <button id="closeAddModalBtn" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-200 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <form id="addLinkForm" class="p-5 space-y-4 text-sm">
+        <div>
+          <label class="block text-slate-700 font-semibold mb-1" for="linkTitle">
+            اسم الخدمة أو المساعدة <span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="linkTitle" 
+            required 
+            placeholder="مثال: تسجيل المساعدات الغذائية الطارئة" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800"
+          >
+        </div>
+
+        <div>
+          <label class="block text-slate-700 font-semibold mb-1" for="linkUrl">
+            الرابط المباشر للخدمة أو التسجيل <span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="url" 
+            id="linkUrl" 
+            required 
+            placeholder="https://... رابط صفحة التقديم أو الاستعلام المباشر" 
+            dir="ltr" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800 text-left"
+          >
+        </div>
+
+        <div>
+          <label class="block text-slate-700 font-semibold mb-1" for="linkOfficialUrl">
+            رابط الموقع الرسمي للجهة (اختياري)
+          </label>
+          <input 
+            type="url" 
+            id="linkOfficialUrl" 
+            placeholder="https://... رابط الصفحة الرئيسية للمنظمة" 
+            dir="ltr" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800 text-left"
+          >
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-700 font-semibold mb-1" for="linkCategory">
+              التصنيف <span class="text-red-500">*</span>
+            </label>
+            <select 
+              id="linkCategory" 
+              required 
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800 bg-white"
+            >
+              <option value="food">🌾 مساعدات غذائية وتموينية</option>
+              <option value="registration">📋 تسجيل اللاجئين ودعم نقدي</option>
+              <option value="health">🚑 إسعاف ورعاية صحية</option>
+              <option value="children">👶 حماية الأطفال والأسرة</option>
+              <option value="familylinks">🔍 بحث عن مفقودين وتواصل</option>
+              <option value="coordination">🌐 تنسيق إنساني وتقارير</option>
+              <option value="other">📌 قطاع إغاثي آخر</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-slate-700 font-semibold mb-1" for="linkAgency">
+              الجهة المشرفة
+            </label>
+            <input 
+              type="text" 
+              id="linkAgency" 
+              placeholder="مثال: برنامج الأغذية / الهلال الأحمر" 
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800"
+            >
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-700 font-semibold mb-1" for="linkDescription">
+            وصف الخدمة أو طريقة الاستفادة
+          </label>
+          <textarea 
+            id="linkDescription" 
+            rows="2" 
+            placeholder="اكتب نبذة عن نوع المساعدة المقدمة أو آلية التسجيل والاستفادة..." 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800"
+          ></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+          <button 
+            type="button" 
+            id="cancelAddBtn" 
+            class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold"
+          >
+            إلغاء
+          </button>
+          <button 
+            type="submit" 
+            class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-md shadow-emerald-200"
+          >
+            حفظ الرابط في القائمة
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Export / Import Links -->
+  <div id="exportModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg border border-slate-200 overflow-hidden">
+      <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
+            </svg>
+          </span>
+          تصدير ونسخ بيانات الروابط
+        </h3>
+        <button id="closeExportModalBtn" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-200 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-5 space-y-4 text-sm">
+        <p class="text-slate-600 leading-relaxed text-xs">
+          يمكنك نسخ كافة الروابط المجمعة حالياً بنقرة واحدة، لتتمكن من مشاركتها أو حفظها كنسخة احتياطية، أو تصديرها كملف نصي.
+        </p>
+
+        <div>
+          <label class="block text-slate-700 font-semibold mb-1" for="exportDataArea">
+            البيانات بتنسيق JSON:
+          </label>
+          <textarea 
+            id="exportDataArea" 
+            readonly 
+            rows="6" 
+            dir="ltr" 
+            class="w-full px-3 py-2 text-xs font-mono bg-slate-50 border border-slate-200 rounded-xl text-slate-700 focus:outline-none select-all"
+          ></textarea>
+        </div>
+
+        <div class="flex items-center gap-2 pt-2">
+          <button id="copyAllJsonBtn" class="flex-1 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+            </svg>
+            نسخ البيانات JSON
+          </button>
+          
+          <button id="downloadJsonBtn" class="flex-1 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+            </svg>
+            تنزيل ملف (aid_links.json)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript App Logic -->
+  <script>
+    // Initial Verified Official Links with BOTH Direct Link and Official Website
+    const INITIAL_OFFICIAL_LINKS = [
+      {
+        id: 'unrwa-reg',
+        title: 'منصة الأونروا الإلكترونية للتسجيل وتحديث البيانات (eUNRWA)',
+        agency: 'وكالة الأمم المتحدة لإغاثة وتشغيل اللاجئين (UNRWA)',
+        category: 'registration',
+        categoryLabel: '📋 تسجيل اللاجئين ودعم نقدي',
+        directUrl: 'https://www.unrwa.org/eUNRWA',
+        officialUrl: 'https://www.unrwa.org/',
+        description: 'منصة رسمية تفاعلية تتيح للاجئي فلسطين تحديث بياناتهم، تسجيل المواليد والزواج، وتنزيل بطاقة التسجيل العائلية الرقمية (eCard) المعتمدة للحصول على المساعدات.',
+        audience: 'اللاجئون الفلسطينيون المسجلون وعائلاتهم',
+        isOfficial: true,
+        verifiedDate: 'نوفمبر 2026'
+      },
+      {
+        id: 'wfp-palestine',
+        title: 'برنامج الأغذية العالمي - استجابة طوارئ فلسطين (WFP)',
+        agency: 'برنامج الأغذية العالمي للأمم المتحدة (WFP)',
+        category: 'food',
+        categoryLabel: '🌾 مساعدات غذائية وتموينية',
+        directUrl: 'https://www.wfp.org/emergencies/palestine-emergency',
+        officialUrl: 'https://www.wfp.org/countries/palestine',
+        description: 'البوابة المباشرة لعمليات المساعدات الغذائية الطارئة، وتوزيع الطرود الغذائية الأساسية، والدقيق، والقسائم والمساعدات النقدية للأسر الأشد احتياجاً.',
+        audience: 'العائلات المتضررة والنازحون في قطاع غزة والضفة الغربية',
+        isOfficial: true,
+        verifiedDate: 'نوفمبر 2026'
+      },
+      {
+        id: 'prcs-main',
+        title: 'جمعية الهلال الأحمر الفلسطيني (PRCS)',
+        agency: 'جمعية الهلال الأحمر الفلسطيني',
+        category: 'health',
+        categoryLabel: '🚑 إسعاف ورعاية صحية',
+        directUrl: 'https://www.palestinercs.org/ar/Category/43/our-programs',
+        officialUrl: 'https://www.palestinercs.org/ar',
+        description: 'الجهة الوطنية الرسمية لخدمات الإسعاف والطوارئ، والمستشفيات الميدانية، ومراكز الرعاية الأولية، وتقديم الدعم الإغاثي والنفسي والاجتماعي.',
+        audience: 'كافة المواطنين المحتاجين لخدمات طبية وإسعافية وطارئة',
+        isOfficial: true,
+        verifiedDate: 'نوفمبر 2026'
+      },
+      {
+        id: 'icrc-familylinks',
+        title: 'اللجنة الدولية للصليب الأحمر - إعادة الروابط العائلية (ICRC)',
+        agency: 'اللجنة الدولية للصليب الأحمر (ICRC)',
+        category: 'familylinks',
+        categoryLabel: '🔍 بحث عن مفقودين وتواصل',
+        directUrl: 'https://familylinks.icrc.org/',
+        officialUrl: 'https://www.icrc.org/ar',
+        description: 'بوابة البحث المباشرة عن أفراد العائلة المفقودين أو المنقطعة أخبارهم، وجمع شمل الأسر، وتقديم طلبات الاستفسار عن أماكن تواجد المعتقلين والمفقودين.',
+        audience: 'العائلات المشتتة أو التي فقدت الاتصال بذويها',
+        isOfficial: true,
+        verifiedDate: 'نوفمبر 2026'
+      },
+      {
+        id: 'unicef-palestine',
+        title: 'اليونيسف - دولة فلسطين (UNICEF)',
+        agency: 'منظمة الأمم المتحدة للطفولة (UNICEF)',
+        category: 'children',
+        categoryLabel: '👶 حماية الأطفال والأسرة',
+        directUrl: 'https://www.unicef.org/sop/',
+        officialUrl: 'https://www.unicef.org/',
+        description: 'برامج الاستجابة المنقذة لحياة الأطفال، تشمل توفير مياه الشرب النقية، علاج سوء التغذية، اللقاحات، ومستلزمات النظافة والتحويلات النقدية الطارئة.',
+        audience: 'الأمهات، الرضّع، والأطفال والعائلات الأكثر تضرراً',
+        isOfficial: true,
+        verifiedDate: 'نوفمبر 2026'
+      },
+      {
+        id: 'who-emro-opt',
+        title: 'منظمة الصحة العالمية - الأراضي الفلسطينية المحتلة (WHO)',
+        agency: 'منظمة الصحة العالمية (WHO EMRO)',
+        category: 'health',
+        categoryLabel: '🚑 إسعاف ورعاية صحية',
+        directUrl: 'https://www.emro.who.int/countries/opt/index.html',
+        officialUrl: 'https://www.who.int/',
+        description: 'تنسيق الإمدادات الطبية والأدوية الحيوية للمستشفيات، وتحديثات الوضع الصحي الطارئ، وتنسيق الإجلاء الطبي للحالات الحرجة والجرحى للعلاج.',
+        audience: 'القطاع الصحي والمستشفيات والمصابين ذوي الحالات الحرجة',
+        isOfficial: true,
+        verifiedDate: 'نوفمبر 2026'
+      },
+      {
+        id: 'ocha-opt',
+        title: 'مكتب تنسيق الشؤون الإنسانية للأمم المتحدة (OCHA oPt)',
+        agency: 'مكتب الأمم المتحدة لتنسيق الشؤون الإنسانية (OCHA)',
+        category: 'coordination',
+        categoryLabel: '🌐 تنسيق إنساني وتقارير',
+        directUrl: 'https://www.ochaopt.org/',
+        officialUrl: 'https://www.unocha.org/',
+        description: 'المنصة الرسمية للتنسيق الإغاثي، وتحديثات الخرائط الميدانية لمراكز الإيواء وتوزيع المعونات، وإصدار تقارير الاحتياجات الإنسانية الفورية.',
+        audience: 'الفرق الإغاثية والباحثون والمستفيدون لمتابعة التوزيعات الميدانية',
+        isOfficial: true,
+        verifiedDate: 'نوفمبر 2026'
+      },
+      {
+        id: 'erc-egypt',
+        title: 'الهلال الأحمر المصري - تنسيق المساعدات الإغاثية (ERC)',
+        agency: 'جمعية الهلال الأحمر المصري',
+        category: 'food',
+        categoryLabel: '🌾 مساعدات غذائية وتموينية',
+        directUrl: 'https://www.egyptianrc.org/',
+        officialUrl: 'https://www.egyptianrc.org/',
+        description: 'الجهة المسؤولة عن تنسيق وتسيير شاحنات القوافل الإغاثية والطرود الغذائية والطبية ومستلزمات الإيواء بالتنسيق مع الهيئات الدولية عبر المعابر.',
+        audience: 'تنسيق الشحنات الإغاثية والمعابر والمساعدات الطارئة',
+        isOfficial: true,
+        verifiedDate: 'نوفمبر 2026'
+      }
+    ];
+
+    // State Management
+    let allLinks = [];
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    // Category dictionary for user custom links
+    const CATEGORY_MAP = {
+      food: '🌾 مساعدات غذائية وتموينية',
+      registration: '📋 تسجيل اللاجئين ودعم نقدي',
+      health: '🚑 إسعاف ورعاية صحية',
+      children: '👶 حماية الأطفال والأسرة',
+      familylinks: '🔍 بحث عن مفقودين وتواصل',
+      coordination: '🌐 تنسيق إنساني وتقارير',
+      other: '📌 قطاع إغاثي آخر'
+    };
+
+    // Load Data
+    function loadLinks() {
+      try {
+        const savedCustom = localStorage.getItem('humanitarian_aid_custom_links');
+        const customLinks = savedCustom ? JSON.parse(savedCustom) : [];
+        allLinks = [...INITIAL_OFFICIAL_LINKS, ...customLinks];
+      } catch (e) {
+        console.error('Failed to load links from localStorage', e);
+        allLinks = [...INITIAL_OFFICIAL_LINKS];
+      }
+      updateStats();
+      renderLinks();
+    }
+
+    // Save Custom Links
+    function saveCustomLink(newLink) {
+      try {
+        const savedCustom = localStorage.getItem('humanitarian_aid_custom_links');
+        const customLinks = savedCustom ? JSON.parse(savedCustom) : [];
+        customLinks.push(newLink);
+        localStorage.setItem('humanitarian_aid_custom_links', JSON.stringify(customLinks));
+        allLinks.push(newLink);
+        updateStats();
+        renderLinks();
+        showToast('تمت إضافة الرابط المباشر بنجاح إلى القائمة!', 'success');
+      } catch (e) {
+        console.error('Failed to save link', e);
+        showToast('حدث خطأ أثناء حفظ الرابط', 'error');
+      }
+    }
+
+    // Delete custom link
+    function deleteCustomLink(id) {
+      try {
+        const savedCustom = localStorage.getItem('humanitarian_aid_custom_links');
+        let customLinks = savedCustom ? JSON.parse(savedCustom) : [];
+        customLinks = customLinks.filter(item => item.id !== id);
+        localStorage.setItem('humanitarian_aid_custom_links', JSON.stringify(customLinks));
+        allLinks = allLinks.filter(item => item.id !== id);
+        updateStats();
+        renderLinks();
+        showToast('تم حذف الرابط بنجاح', 'info');
+      } catch (e) {
+        console.error('Failed to delete link', e);
+      }
+    }
+
+    // Update Stats
+    function updateStats() {
+      const userAddedCount = allLinks.filter(l => !l.isOfficial).length;
+      document.getElementById('statTotalLinks').textContent = allLinks.length;
+      document.getElementById('statUserAdded').textContent = userAddedCount;
+      document.getElementById('catCountAll').textContent = allLinks.length;
+      
+      const uniqueCats = new Set(allLinks.map(l => l.category));
+      document.getElementById('statCategories').textContent = uniqueCats.size;
+    }
+
+    // Filter Logic
+    function getFilteredLinks() {
+      return allLinks.filter(item => {
+        const matchesCategory = (currentCategory === 'all') || (item.category === currentCategory);
+        
+        const q = searchQuery.trim().toLowerCase();
+        if (!q) return matchesCategory;
+
+        const matchesQuery = 
+          (item.title && item.title.toLowerCase().includes(q)) ||
+          (item.agency && item.agency.toLowerCase().includes(q)) ||
+          (item.description && item.description.toLowerCase().includes(q)) ||
+          (item.audience && item.audience.toLowerCase().includes(q)) ||
+          (item.categoryLabel && item.categoryLabel.toLowerCase().includes(q));
+
+        return matchesCategory && matchesQuery;
+      });
+    }
+
+    // Render Function
+    function renderLinks() {
+      const grid = document.getElementById('linksGrid');
+      const emptyState = document.getElementById('emptyState');
+      const resultsCount = document.getElementById('resultsCount');
+
+      const filtered = getFilteredLinks();
+      resultsCount.textContent = `${filtered.length} نتائج`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      grid.innerHTML = '';
+
+      filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col overflow-hidden relative group';
+
+        const directLinkUrl = item.directUrl || item.url || '#';
+        const officialLinkUrl = item.officialUrl || item.url || directLinkUrl;
+
+        // Badge styling based on category
+        let badgeColorClass = 'bg-emerald-50 text-emerald-700 border-emerald-200';
+        if (item.category === 'health') badgeColorClass = 'bg-red-50 text-red-700 border-red-200';
+        else if (item.category === 'children') badgeColorClass = 'bg-sky-50 text-sky-700 border-sky-200';
+        else if (item.category === 'familylinks') badgeColorClass = 'bg-amber-50 text-amber-700 border-amber-200';
+        else if (item.category === 'registration') badgeColorClass = 'bg-purple-50 text-purple-700 border-purple-200';
+        else if (item.category === 'coordination') badgeColorClass = 'bg-blue-50 text-blue-700 border-blue-200';
+
+        card.innerHTML = `
+          <div class="p-5 flex-grow space-y-3">
+            <!-- Header of card -->
+            <div class="flex items-start justify-between gap-2">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold border ${badgeColorClass}">
+                ${item.categoryLabel || 'مساعدة عامة'}
+              </span>
+              <div class="flex items-center gap-1">
+                ${item.isOfficial ? `
+                  <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60" title="تم التحقق من الرابط الرسمي">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    رسمي معتمد
+                  </span>
+                ` : `
+                  <span class="inline-flex items-center text-[11px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-200">
+                    أضافه المستخدم
+                  </span>
+                  <button class="delete-btn text-slate-400 hover:text-red-500 p-1" data-id="${item.id}" title="حذف هذا الرابط">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                  </button>
+                `}
+              </div>
+            </div>
+
+            <!-- Title -->
+            <h3 class="font-extrabold text-base text-slate-900 leading-snug">
+              ${escapeHtml(item.title)}
+            </h3>
+
+            <!-- Agency -->
+            <div class="text-xs font-semibold text-slate-500 flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+              <span>${escapeHtml(item.agency || 'جهة إنسانية')}</span>
+            </div>
+
+            <!-- Description -->
+            <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+              ${escapeHtml(item.description || 'لا يوجد وصف متاح')}
+            </p>
+
+            <!-- Audience / Target note -->
+            ${item.audience ? `
+              <div class="text-[11px] bg-slate-50 p-2 rounded-xl text-slate-500 border border-slate-100 flex items-start gap-1.5">
+                <span class="font-bold text-slate-700 whitespace-nowrap">الفئات المستهدفة:</span>
+                <span class="line-clamp-1">${escapeHtml(item.audience)}</span>
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- Card Actions Footer with TWO distinct action buttons + Copy -->
+          <div class="p-3 bg-slate-50 border-t border-slate-100 flex flex-col gap-2">
+            <div class="flex items-center gap-2">
+              <!-- Button 1: Direct Link (Primary Action) -->
+              <a 
+                href="${escapeHtml(directLinkUrl)}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all shadow-xs"
+                title="الانتقال المباشر لصفحة التسجيل أو الخدمة"
+              >
+                <svg class="w-3.5 h-3.5 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <span>الرابط المباشر للخدمة</span>
+                <svg class="w-3 h-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </a>
+
+              <!-- Copy Direct Link Button -->
+              <button 
+                class="copy-btn p-2 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all flex-shrink-0" 
+                data-url="${escapeHtml(directLinkUrl)}" 
+                title="نسخ الرابط المباشر"
+              >
+                <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Button 2: Official Website (Secondary Action) -->
+            <a 
+              href="${escapeHtml(officialLinkUrl)}" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-200/80 hover:bg-slate-300 text-slate-700 font-semibold text-xs transition-all"
+              title="زيارة الصفحة الرسمية للمنظمة"
+            >
+              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+              <span>الموقع الرسمي للمنظمة</span>
+            </a>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      // Attach event listeners for dynamic buttons inside grid
+      grid.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const url = btn.getAttribute('data-url');
+          copyToClipboard(url);
+        });
+      });
+
+      grid.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = btn.getAttribute('data-id');
+          deleteCustomLink(id);
+        });
+      });
+    }
+
+    // Copy to clipboard helper
+    function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('تم نسخ الرابط المباشر إلى الحافظة بنجاح!', 'success');
+        }).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast('تم نسخ الرابط المباشر بنجاح!', 'success');
+      } catch (err) {
+        showToast('تعذر نسخ الرابط تلقائياً', 'error');
+      }
+    }
+
+    // Helper: Escape HTML
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Toast Notification System
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      
+      let bg = 'bg-slate-900 text-white';
+      if (type === 'success') bg = 'bg-emerald-600 text-white shadow-emerald-200';
+      else if (type === 'error') bg = 'bg-red-600 text-white shadow-red-200';
+      else if (type === 'info') bg = 'bg-blue-600 text-white shadow-blue-200';
+
+      toast.className = `pointer-events-auto flex items-center gap-2 px-4 py-3 rounded-xl shadow-lg text-xs font-bold transition-all duration-300 transform translate-y-[-10px] opacity-0 ${bg}`;
+      toast.innerHTML = `
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <span>${escapeHtml(message)}</span>
+      `;
+
+      container.appendChild(toast);
+
+      // Animate in
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-[-10px]', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+      });
+
+      // Remove after 3.5s
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-[-10px]', 'opacity-0');
+        setTimeout(() => {
+          if (toast.parentNode) toast.parentNode.removeChild(toast);
+        }, 300);
+      }, 3500);
+    }
+
+    // Event Listeners Setup
+    document.addEventListener('DOMContentLoaded', () => {
+      loadLinks();
+
+      // Search input handler
+      const searchInput = document.getElementById('searchInput');
+      const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        if (searchQuery.trim().length > 0) {
+          clearSearchBtn.classList.remove('hidden');
+        } else {
+          clearSearchBtn.classList.add('hidden');
+        }
+        renderLinks();
+      });
+
+      clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        clearSearchBtn.classList.add('hidden');
+        renderLinks();
+        searchInput.focus();
+      });
+
+      // Category filter buttons
+      const categoryButtons = document.querySelectorAll('.category-btn');
+      categoryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          categoryButtons.forEach(b => {
+            b.classList.remove('bg-emerald-600', 'text-white', 'shadow-xs');
+            b.classList.add('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+          });
+          btn.classList.remove('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+          btn.classList.add('bg-emerald-600', 'text-white', 'shadow-xs');
+
+          currentCategory = btn.getAttribute('data-cat');
+          renderLinks();
+        });
+      });
+
+      // Reset filters button in empty state
+      document.getElementById('resetFiltersBtn').addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        clearSearchBtn.classList.add('hidden');
+        currentCategory = 'all';
+        categoryButtons.forEach(b => {
+          if (b.getAttribute('data-cat') === 'all') {
+            b.classList.remove('bg-slate-100', 'text-slate-700');
+            b.classList.add('bg-emerald-600', 'text-white');
+          } else {
+            b.classList.remove('bg-emerald-600', 'text-white');
+            b.classList.add('bg-slate-100', 'text-slate-700');
+          }
+        });
+        renderLinks();
+      });
+
+      // Add Modal Open/Close
+      const addModal = document.getElementById('addModal');
+      const openAddModalBtn = document.getElementById('openAddModalBtn');
+      const closeAddModalBtn = document.getElementById('closeAddModalBtn');
+      const cancelAddBtn = document.getElementById('cancelAddBtn');
+      const addLinkForm = document.getElementById('addLinkForm');
+
+      function openAddModal() {
+        addModal.classList.remove('hidden');
+        document.getElementById('linkTitle').focus();
+      }
+
+      function closeAddModal() {
+        addModal.classList.add('hidden');
+        addLinkForm.reset();
+      }
+
+      openAddModalBtn.addEventListener('click', openAddModal);
+      closeAddModalBtn.addEventListener('click', closeAddModal);
+      cancelAddBtn.addEventListener('click', closeAddModal);
+
+      // Handle Add Form Submission
+      addLinkForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const title = document.getElementById('linkTitle').value.trim();
+        const directUrl = document.getElementById('linkUrl').value.trim();
+        const officialUrl = document.getElementById('linkOfficialUrl').value.trim() || directUrl;
+        const category = document.getElementById('linkCategory').value;
+        const agency = document.getElementById('linkAgency').value.trim();
+        const description = document.getElementById('linkDescription').value.trim();
+
+        if (!title || !directUrl) {
+          showToast('يرجى ملء الحقول المطلوبة', 'error');
+          return;
+        }
+
+        const newLink = {
+          id: 'custom-' + Date.now(),
+          title: title,
+          agency: agency || 'مؤسسة إنسانية',
+          category: category,
+          categoryLabel: CATEGORY_MAP[category] || 'قطاع إغاثي',
+          directUrl: directUrl,
+          officialUrl: officialUrl,
+          description: description || 'تمت إضافة هذا الرابط بواسطة المستخدم',
+          audience: 'المستفيدون وعامة الناس',
+          isOfficial: false,
+          verifiedDate: 'أضيف حديثاً'
+        };
+
+        saveCustomLink(newLink);
+        closeAddModal();
+      });
+
+      // Export / Backup Modal
+      const exportModal = document.getElementById('exportModal');
+      const openExportModalBtn = document.getElementById('openExportModalBtn');
+      const closeExportModalBtn = document.getElementById('closeExportModalBtn');
+      const exportDataArea = document.getElementById('exportDataArea');
+      const copyAllJsonBtn = document.getElementById('copyAllJsonBtn');
+      const downloadJsonBtn = document.getElementById('downloadJsonBtn');
+
+      openExportModalBtn.addEventListener('click', () => {
+        exportDataArea.value = JSON.stringify(allLinks, null, 2);
+        exportModal.classList.remove('hidden');
+      });
+
+      closeExportModalBtn.addEventListener('click', () => {
+        exportModal.classList.add('hidden');
+      });
+
+      copyAllJsonBtn.addEventListener('click', () => {
+        copyToClipboard(exportDataArea.value);
+      });
+
+      downloadJsonBtn.addEventListener('click', () => {
+        try {
+          const blob = new Blob([exportDataArea.value], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'official_aid_links.json';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          showToast('تم تحميل ملف البيانات بنجاح', 'success');
+        } catch (e) {
+          showToast('تعذر تنزيل الملف', 'error');
+        }
+      });
+
+      // Close modals on click outside
+      window.addEventListener('click', (e) => {
+        if (e.target === addModal) closeAddModal();
+        if (e.target === exportModal) exportModal.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
